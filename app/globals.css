@@ -1,0 +1,211 @@
+/* Global CSS for MovieReview Website */
+
+/* Modern, cross-browser scrollbar styling */
+:root {
+  --sb-track: #141428;
+  --sb-thumb: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+  --sb-thumb-hover: linear-gradient(180deg, #5a6fd8 0%, #6d4ea1 100%);
+}
+
+html, body, * {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #667eea var(--sb-track); /* Firefox */
+}
+
+/* Prevent outer (browser) scrollbar; let RN ScrollView handle scrolling */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden !important;
+  background: #0f0f23;
+}
+
+#root, #__next, #app-root {
+  height: 100%;
+}
+
+/* WebKit-based browsers */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--sb-track);
+  border-radius: 10px;
+  border: 1px solid #2d2d44;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb);
+  border-radius: 8px;
+  border: 2px solid var(--sb-track);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--sb-thumb-hover);
+}
+
+::-webkit-scrollbar-corner { background: transparent; }
+
+/* Smooth transitions */
+* { transition: all 0.25s ease; }
+
+/* Hover effects for movie cards */
+.movie-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Button hover effects */
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Navigation hover effects */
+.nav-item:hover {
+  transform: translateY(-2px);
+}
+
+/* Rating badge animation */
+.rating-badge {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Hero section gradient animation */
+.hero {
+  background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Movie image hover effect */
+.movie-image:hover {
+  transform: scale(1.02);
+}
+
+/* Genre card hover effect */
+.genre-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Loading animation */
+.loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Fade in animation */
+.fade-in {
+  animation: fadeIn 0.8s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive design improvements */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 32px !important;
+  }
+  
+  .hero-subtitle {
+    font-size: 16px !important;
+  }
+  
+  .movie-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .genre-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .genre-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Custom focus styles for accessibility */
+.btn:focus,
+.nav-item:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .container {
+    background-color: #0a0a0a;
+  }
+  
+  .movie-card {
+    background-color: #1a1a1a;
+  }
+}
+
+/* Print styles */
+@media print {
+  .bottom-nav,
+  .hero-buttons {
+    display: none;
+  }
+  
+  .movie-card {
+    break-inside: avoid;
+    margin-bottom: 20px;
+  }
+}
