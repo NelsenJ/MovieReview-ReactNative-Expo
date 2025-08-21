@@ -13,7 +13,7 @@ cd ExpoGo-TrainingApp
 npm install
 
 # 3) Start dev server (choose platform in the terminal)
-npm start
+npx expo start
 # lalu tekan: w = Web, a = Android, i = iOS
 ```
 
@@ -28,7 +28,7 @@ npx expo run:android
 npx expo run:ios
 ```
 
-Setelah terpasang, jalankan `npm start` dan buka build tersebut untuk terhubung ke Metro bundler.
+Setelah terpasang, jalankan `npx expo start` dan buka build tersebut untuk terhubung ke Metro bundler.
 
 ## 🐛 Troubleshooting
 - Bersihkan cache: `npx expo start -c`
@@ -100,7 +100,7 @@ cd expo
 npm install
 
 # Start development server
-npm start
+npx expo start
 
 # Atau untuk web khusus
 npm run web
