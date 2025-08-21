@@ -81,6 +81,11 @@ export default function TabLayout() {
           ),
         }}
       />
+      <Tabs.Screen name="aksi" options={{ title: "Aksi", tabBarIcon: ({ color }) => <Ionicons name="flame" size={22} color={color} /> }} />
+      <Tabs.Screen name="comedy" options={{ title: "Comedy", tabBarIcon: ({ color }) => <Ionicons name="happy" size={22} color={color} /> }} />
+      <Tabs.Screen name="drama" options={{ title: "Drama", tabBarIcon: ({ color }) => <Ionicons name="theater-masks" size={22} color={color} /> }} />
+      <Tabs.Screen name="dokumenter" options={{ title: "Dokumenter", tabBarIcon: ({ color }) => <Ionicons name="book" size={22} color={color} /> }} />
     </Tabs>
+
   );
 }
