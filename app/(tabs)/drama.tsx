@@ -108,7 +108,7 @@ export default function DramaPage() {
         {filteredMovies.map((movie) => (
           <View key={movie.id} style={styles.movieCard}>
             <Image
-              source={failedImages[movie.id] ? require('../assets/images/image.jpeg') : { uri: movie.image }}
+              source={failedImages[movie.id] ? require('../../assets/images/image.jpeg') : { uri: movie.image }}
               style={styles.movieImage}
               onError={() => setFailedImages((prev) => ({ ...prev, [movie.id]: true }))}
             />

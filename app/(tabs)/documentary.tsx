@@ -3,75 +3,75 @@ import { Link, useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import { Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
-export default function ComedyPage() {
+export default function DocumentaryPage() {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
   const [failedImages, setFailedImages] = useState<Record<number, boolean>>({});
   
-  const comedyMovies = [
+  const documentaryMovies = [
     {
-      id: 2,
-      title: "The Grand Budapest Hotel",
-      year: 2014,
-      director: "Wes Anderson",
+      id: 4,
+      title: "Planet Earth II",
+      year: 2016,
+      director: "Various Directors",
+      rating: 9.5,
+      image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=600&fit=crop",
+      description: "A stunning exploration of our planet's most beautiful and diverse landscapes, filmed with cutting-edge technology.",
+      cast: ["David Attenborough"],
+      duration: "6 episodes",
+      category: "Nature & Wildlife"
+    },
+    {
+      id: 14,
+      title: "The Last Dance",
+      year: 2020,
+      director: "Jason Hehir",
+      rating: 9.1,
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=600&fit=crop",
+      description: "A deep dive into the Chicago Bulls dynasty of the 1990s, featuring never-before-seen footage and interviews.",
+      cast: ["Michael Jordan", "Scottie Pippen", "Dennis Rodman"],
+      duration: "10 episodes",
+      category: "Sports"
+    },
+    {
+      id: 15,
+      title: "My Octopus Teacher",
+      year: 2020,
+      director: "Pippa Ehrlich",
       rating: 8.1,
-      image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=600&fit=crop",
-      description: "A quirky comedy about a legendary concierge and his young protégé in a famous European hotel.",
-      cast: ["Ralph Fiennes", "Tony Revolori", "F. Murray Abraham"],
-      duration: "99 min",
-      humor: "Witty & Quirky"
-    },
-    {
-      id: 6,
-      title: "Superbad",
-      year: 2007,
-      director: "Greg Mottola",
-      rating: 7.6,
-      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=600&fit=crop",
-      description: "Two high school friends navigate the challenges of adolescence and party planning.",
-      cast: ["Jonah Hill", "Michael Cera", "Christopher Mintz-Plasse"],
-      duration: "113 min",
-      humor: "Teen Comedy"
-    },
-    {
-      id: 7,
-      title: "Bridesmaids",
-      year: 2011,
-      director: "Paul Feig",
-      rating: 6.8,
       image: "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=400&h=600&fit=crop",
-      description: "A comedy about a maid of honor who tries to keep her best friend's wedding from falling apart.",
-      cast: ["Kristen Wiig", "Maya Rudolph", "Rose Byrne"],
-      duration: "125 min",
-      humor: "Romantic Comedy"
+      description: "A filmmaker forges an unusual friendship with an octopus living in a South African kelp forest.",
+      cast: ["Craig Foster"],
+      duration: "85 min",
+      category: "Nature & Wildlife"
     },
     {
-      id: 8,
-      title: "Shaun of the Dead",
-      year: 2004,
-      director: "Edgar Wright",
-      rating: 7.9,
+      id: 16,
+      title: "The Social Dilemma",
+      year: 2020,
+      director: "Jeff Orlowski",
+      rating: 7.6,
       image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=600&fit=crop",
-      description: "A zombie comedy about a man who tries to get his life together during a zombie apocalypse.",
-      cast: ["Simon Pegg", "Nick Frost", "Kate Ashfield"],
-      duration: "99 min",
-      humor: "Zombie Comedy"
+      description: "This documentary-drama hybrid explores the dangerous human impact of social networking.",
+      cast: ["Tristan Harris", "Jeff Orlowski"],
+      duration: "94 min",
+      category: "Technology"
     },
     {
-      id: 9,
-      title: "The Hangover",
-      year: 2009,
-      director: "Todd Phillips",
-      rating: 7.7,
+      id: 17,
+      title: "Free Solo",
+      year: 2018,
+      director: "Elizabeth Chai Vasarhelyi",
+      rating: 8.1,
       image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=600&fit=crop",
-      description: "Three friends wake up from a bachelor party with no memory of the previous night.",
-      cast: ["Bradley Cooper", "Ed Helms", "Zach Galifianakis"],
+      description: "Follow Alex Honnold as he becomes the first person to ever free solo climb Yosemite's 3,000ft El Capitan Wall.",
+      cast: ["Alex Honnold"],
       duration: "100 min",
-      humor: "Buddy Comedy"
+      category: "Adventure"
     }
   ];
 
-  const filteredMovies = comedyMovies.filter(m => m.title.toLowerCase().includes(searchQuery.toLowerCase()));
+  const filteredMovies = documentaryMovies.filter(m => m.title.toLowerCase().includes(searchQuery.toLowerCase()));
 
   const handleReadReview = (movieId: number) => {
     router.push(('/review/' + movieId.toString()) as any);
@@ -87,15 +87,15 @@ export default function ComedyPage() {
             <Text style={styles.backText}> Back to Home</Text>
           </View>
         </Link>
-        <Text style={styles.pageTitle}>Comedy Movies</Text>
-        <Text style={styles.pageSubtitle}>Laugh out loud with the funniest films</Text>
+        <Text style={styles.pageTitle}>Documentary Films</Text>
+        <Text style={styles.pageSubtitle}>Real stories that inspire and educate</Text>
       </View>
 
       {/* Search Bar */}
       <View style={styles.searchBar}>
         <FontAwesome name="search" size={18} color="#9aa0b4" />
         <TextInput
-          placeholder="Search comedy movies..."
+          placeholder="Search documentary films..."
           placeholderTextColor="#9aa0b4"
           style={styles.searchInput}
           value={searchQuery}
@@ -108,7 +108,7 @@ export default function ComedyPage() {
         {filteredMovies.map((movie) => (
           <View key={movie.id} style={styles.movieCard}>
             <Image
-              source={failedImages[movie.id] ? require('../assets/images/image.jpeg') : { uri: movie.image }}
+              source={failedImages[movie.id] ? require('../../assets/images/image.jpeg') : { uri: movie.image }}
               style={styles.movieImage}
               onError={() => setFailedImages((prev) => ({ ...prev, [movie.id]: true }))}
             />
@@ -129,14 +129,14 @@ export default function ComedyPage() {
                 <Text style={styles.movieDirector}>Dir. {movie.director}</Text>
               </View>
               
-              <View style={styles.humorBadge}>
-                <Text style={styles.humorText}>{movie.humor}</Text>
+              <View style={styles.categoryBadge}>
+                <Text style={styles.categoryText}>{movie.category}</Text>
               </View>
               
               <Text style={styles.movieDescription}>{movie.description}</Text>
               
               <View style={styles.castContainer}>
-                <Text style={styles.castLabel}>Cast:</Text>
+                <Text style={styles.castLabel}>Featuring:</Text>
                 <Text style={styles.castText}>{movie.cast.join(', ')}</Text>
               </View>
               
@@ -145,7 +145,7 @@ export default function ComedyPage() {
                 onPress={() => handleReadReview(movie.id)}
               >
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                  <FontAwesome name="book" size={16} color="#000" />
+                  <FontAwesome name="book" size={16} color="#ffffff" />
                   <Text style={styles.reviewButtonText}> Read Full Review</Text>
                 </View>
               </TouchableOpacity>
@@ -159,13 +159,13 @@ export default function ComedyPage() {
         <Link href="/action" style={styles.navItem}>
           <Text style={styles.navText}>Action</Text>
         </Link>
-        <Link href="/comedy" style={[styles.navItem, styles.activeNav]}>
+        <Link href="/comedy" style={styles.navItem}>
           <Text style={styles.navText}>Comedy</Text>
         </Link>
         <Link href="/drama" style={styles.navItem}>
           <Text style={styles.navText}>Drama</Text>
         </Link>
-        <Link href="/documentary" style={styles.navItem}>
+        <Link href="/documentary" style={[styles.navItem, styles.activeNav]}>
           <Text style={styles.navText}>Documentary</Text>
         </Link>
       </View>
@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
   header: {
     padding: 32,
     alignItems: 'center',
-    backgroundColor: 'linear-gradient(135deg, #fdcb6e 0%, #e17055 100%)',
+    backgroundColor: 'linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%)',
   },
   backButton: {
     textDecorationLine: 'none',
@@ -277,30 +277,30 @@ const styles = StyleSheet.create({
     gap: 16,
   },
   movieYear: {
-    color: '#fdcb6e',
-    fontSize: 16,
-    fontWeight: '600',
-  },
-  movieDuration: {
-    color: '#74b9ff',
-    fontSize: 16,
-    fontWeight: '600',
-  },
-  movieDirector: {
     color: '#a29bfe',
     fontSize: 16,
     fontWeight: '600',
   },
-  humorBadge: {
-    backgroundColor: '#fdcb6e',
+  movieDuration: {
+    color: '#fd79a8',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  movieDirector: {
+    color: '#74b9ff',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  categoryBadge: {
+    backgroundColor: '#a29bfe',
     alignSelf: 'flex-start',
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 20,
     marginBottom: 16,
   },
-  humorText: {
-    color: '#000000',
+  categoryText: {
+    color: '#ffffff',
     fontSize: 14,
     fontWeight: '600',
   },
@@ -324,14 +324,14 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   reviewButton: {
-    backgroundColor: '#fdcb6e',
+    backgroundColor: '#a29bfe',
     paddingVertical: 12,
     paddingHorizontal: 24,
     borderRadius: 25,
     alignItems: 'center',
   },
   reviewButtonText: {
-    color: '#000000',
+    color: '#ffffff',
     fontSize: 16,
     fontWeight: '600',
   },
@@ -351,7 +351,7 @@ const styles = StyleSheet.create({
     textDecorationLine: 'none',
   },
   activeNav: {
-    backgroundColor: '#fdcb6e',
+    backgroundColor: '#a29bfe',
   },
   navText: {
     color: '#ffffff',

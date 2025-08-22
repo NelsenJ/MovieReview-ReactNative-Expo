@@ -155,7 +155,7 @@ export default function ReviewPage() {
       {/* Movie Header */}
       <View style={styles.movieHeader}>
         <Image
-          source={imageFailed ? require('../../assets/images/image.jpeg') : { uri: movie.image }}
+          source={imageFailed ? require('../../../assets/images/image.jpeg') : { uri: movie.image }}
           style={styles.movieImage}
           onError={() => setImageFailed(true)}
         />
