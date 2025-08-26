@@ -30,7 +30,6 @@ export default function ReviewPage() {
   const [isEditing, setIsEditing] = useState(false);
   const [imageFailed, setImageFailed] = useState(false);
 
-  // Fake movie data - in real app this would come from API
   const movieData: Movie[] = [
     {
       id: 1,
